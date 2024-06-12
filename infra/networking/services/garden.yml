@@ -1,0 +1,8 @@
+kind: Deploy
+type: kubernetes
+name: services
+dependencies: [deploy.keda-add-ons-http]
+include: ['service.yml']
+spec:
+  files:
+    - './service.yml'

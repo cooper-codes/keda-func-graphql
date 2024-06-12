@@ -1,0 +1,40 @@
+kind: Run
+type: exec
+name: add-keda-repo
+include: ['scripts']
+spec:
+  shell: true
+  command: ['./scripts/helm.sh']
+
+---
+kind: Deploy
+type: helm
+name: keda
+dependencies: [run.add-keda-repo]
+spec:
+  chart:
+    name: keda
+    repo: https://kedacore.github.io/charts
+    version: 2.14.0
+
+---
+kind: Deploy
+type: helm
+name: keda-add-ons-http
+dependencies: [deploy.keda]
+spec:
+  chart:
+    name: keda-add-ons-http
+    repo: https://kedacore.github.io/charts
+    version: 0.8.0
+
+---
+kind: Deploy
+name: keda-cleanup
+type: exec
+dependencies: [deploy.keda]
+include: [scripts]
+spec:
+  shell: true
+  deployCommand: []
+  cleanupCommand: [./scripts/cleanup.sh]

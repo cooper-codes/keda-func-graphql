@@ -1,0 +1,33 @@
+kind: HTTPScaledObject
+apiVersion: http.keda.sh/v1alpha1
+metadata:
+  name: functions
+  annotations:
+    httpscaledobject.keda.sh/skip-scaledobject-creation: 'false'
+spec:
+  hosts:
+    - local.garden
+    # needed for internal graphql introspection
+    - internal-router
+  # relative to base path /functions (e.g. /functions/api/graphql)
+  # this is because in the ingress the path is rewritten due to rewrite-target: /$2
+  # See here https://kubernetes.github.io/ingress-nginx/examples/rewrite/#rewrite-target
+  pathPrefixes:
+    - /api
+  scaleTargetRef:
+    name: functions-http
+    kind: Deployment
+    service: functions-http
+    apiVersion: apps/v1
+    port: 80
+  replicas:
+    min: 1
+    max: 10
+  scaledownPeriod: 180
+  scalingMetric: # requestRate and concurrency are mutually exclusive
+    requestRate:
+      granularity: 1s
+      targetValue: 10
+      window: 1m
+    # concurrency:
+    #   targetValue: 100

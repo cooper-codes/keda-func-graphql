@@ -1,0 +1,29 @@
+kind: Deploy
+type: helm
+name: nginx-ingress
+dependencies: [deploy.ingress-config]
+exclude: ['*']
+spec:
+  namespace: ${var.namespace}
+  chart:
+    name: ingress-nginx
+    repo: https://kubernetes.github.io/ingress-nginx
+  values:
+    controller:
+      replicaCount: 1
+      electionID: ingress-controller-leader
+      ingressClassResource:
+        name: internal-nginx
+        enabled: true
+        default: false
+        controllerValue: k8s.io/internal-ingress-nginx
+      ingressClass: k8s.io/internal-nginx
+
+---
+kind: Deploy
+type: kubernetes
+name: ingress-config
+include: ['ingress.yml']
+spec:
+  files:
+    - './ingress.yml'

@@ -1,0 +1,4 @@
+supergraph:
+  introspection: true
+include_subgraph_errors:
+  all: true

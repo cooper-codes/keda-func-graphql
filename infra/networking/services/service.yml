@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: internal-router
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/component: interceptor
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: proxy
+      name: internal-proxy

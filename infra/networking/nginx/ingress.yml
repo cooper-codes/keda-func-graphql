@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: internal-nginx
+  annotations:
+    meta.helm.sh/release-name: nginx-ingress
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/managed-by: Helm
+spec:
+  controller: k8s.io/internal-ingress-nginx
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: function-ingress
+  namespace: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    ingress.kubernetes.io/force-ssl-redirect: 'true'
+spec:
+  ingressClassName: internal-nginx
+  tls:
+    - hosts:
+        - local.garden
+      secretName: localcert-tls-secret
+  rules:
+    - host: local.garden
+      http:
+        paths:
+          - path: /functions(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: keda-add-ons-http-interceptor-proxy
+                port:
+                  number: 8080
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: router
+                port:
+                  number: 4000

@@ -1,0 +1,30 @@
+apiVersion: garden.io/v1
+kind: Project
+name: keda-graphql
+
+defaultEnvironment: local
+
+variables:
+  namespace: ingress-nginx
+
+environments:
+  - name: local
+    defaultNamespace: ${var.namespace}
+    variables:
+      baseHostname: local.garden
+      context: docker-desktop
+
+providers:
+  - name: exec
+    initScript: ./scripts/create-cert.sh ${environment.namespace}
+
+  - name: local-kubernetes
+    dependencies: [exec]
+    environments: [local]
+    namespace: ${environment.namespace}
+    context: ${var.context}
+    defaultHostname: ${var.baseHostname}
+    setupIngressController: false
+    deploymentRegistry:
+      hostname: '127.0.0.1:5000'
+      namespace: 's4'

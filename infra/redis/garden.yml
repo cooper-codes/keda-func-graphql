@@ -1,0 +1,11 @@
+kind: Deploy
+type: container
+name: redis
+exclude: ['*']
+spec:
+  image: redis:alpine
+  replicas: 1
+  ports:
+    - name: http
+      protocol: TCP
+      containerPort: 6379

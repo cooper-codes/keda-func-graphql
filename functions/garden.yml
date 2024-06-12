@@ -1,0 +1,21 @@
+kind: Build
+type: container
+name: functions
+exclude: [node_modules, scripts, dist]
+
+---
+kind: Deploy
+name: functions
+type: exec
+dependencies: [build.functions, deploy.nginx-ingress, deploy.redis]
+include: [scripts]
+spec:
+  shell: true
+  deployCommand:
+    - ./scripts/deploy.sh
+    - ${actions.build.functions.outputs.deploymentImageId}
+  cleanupCommand:
+    - ./scripts/cleanup.sh
+    - ${actions.build.functions.outputs.deploymentImageId}
+  # statusCommand:
+  #   - ./scripts/status.sh

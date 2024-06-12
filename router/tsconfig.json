@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "build",
+    "sourceMap": false,
+    "typeRoots": ["node_modules/@types", "@types"],
+    "noEmit": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitOverride": true,
+    "lib": ["es2018", "esnext.asynciterable", "DOM"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", ".vscode", "**/*.test.ts", ".idea", ".garden"]
+}

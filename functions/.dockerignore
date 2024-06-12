@@ -1,0 +1,7 @@
+local.settings.json
+.garden
+node_modules
+dist
+infra
+.vscode
+scripts

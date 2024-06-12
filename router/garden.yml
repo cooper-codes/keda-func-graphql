@@ -1,0 +1,16 @@
+kind: Build
+type: container
+name: router
+
+---
+kind: Deploy
+name: router
+type: container
+build: router
+dependencies: [deploy.functions, deploy.services, deploy.scaled-objects]
+spec:
+  ports:
+    - name: http
+      containerPort: 4000
+  healthCheck:
+    tcpPort: http
