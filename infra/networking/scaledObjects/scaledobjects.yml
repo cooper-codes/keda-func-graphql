@@ -6,7 +6,7 @@ metadata:
     httpscaledobject.keda.sh/skip-scaledobject-creation: "false"
 spec:
   hosts:
-    - local.garden
+    - garden.local
     # needed for internal graphql introspection
     - internal-router
   # relative to base path /functions (e.g. /functions/api/graphql)

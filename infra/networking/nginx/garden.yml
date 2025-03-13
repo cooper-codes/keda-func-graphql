@@ -25,5 +25,5 @@ type: kubernetes
 name: ingress-config
 include: ["ingress.yml"]
 spec:
-  files:
+  manifestFiles:
     - "./ingress.yml"

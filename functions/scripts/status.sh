@@ -1,6 +1,6 @@
 #! /bin/bash
 
-RESP=$(curl -s https://local.garden/functions/api/graphql\?query\=%7B__typename%7D -H "apollo-require-preflight:true" -m 5)
+RESP=$(curl -s https://garden.local/functions/api/graphql\?query\=%7B__typename%7D -H "apollo-require-preflight:true" -m 5)
 
 echo Response: $RESP
 

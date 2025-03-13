@@ -24,10 +24,10 @@ spec:
   ingressClassName: internal-nginx
   tls:
     - hosts:
-        - local.garden
+        - garden.local
       secretName: localcert-tls-secret
   rules:
-    - host: local.garden
+    - host: garden.local
       http:
         paths:
           - path: /functions(/|$)(.*)

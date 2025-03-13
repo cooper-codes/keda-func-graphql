@@ -33,9 +33,8 @@ ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     FUNCTIONS_EXTENSION_VERSION="~4" \
     FUNCTIONS_WORKER_RUNTIME=node
 
-COPY --from=prod-deps /home/site/wwwroot/node_modules /app/node_modules
-COPY --from=build /home/site/wwwroot/dist /app/dist
-COPY  /functions/graphql/function.json /home/site/wwwroot/graphql/function.json
-# COPY --from=builder /home/site/wwwroot/helloworld /home/site/wwwroot/helloworld
+COPY --from=prod-deps /app/node_modules /home/site/wwwroot/node_modules 
+COPY --from=build /app/dist /home/site/wwwroot/dist 
+COPY  /graphql/function.json /home/site/wwwroot/graphql/function.json
 
 COPY package.json host.json /home/site/wwwroot/
