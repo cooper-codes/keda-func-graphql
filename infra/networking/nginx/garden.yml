@@ -2,7 +2,7 @@ kind: Deploy
 type: helm
 name: nginx-ingress
 dependencies: [deploy.ingress-config]
-exclude: ['*']
+exclude: ["*"]
 spec:
   namespace: ${var.namespace}
   chart:
@@ -23,7 +23,7 @@ spec:
 kind: Deploy
 type: kubernetes
 name: ingress-config
-include: ['ingress.yml']
+include: ["ingress.yml"]
 spec:
   files:
-    - './ingress.yml'
+    - "./ingress.yml"

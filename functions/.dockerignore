@@ -2,6 +2,6 @@ local.settings.json
 .garden
 node_modules
 dist
-infra
+schema.gql
 .vscode
 scripts

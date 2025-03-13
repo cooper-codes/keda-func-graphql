@@ -1,10 +1,10 @@
 kind: Run
 type: exec
 name: add-keda-repo
-include: ['scripts']
+include: ["scripts"]
 spec:
   shell: true
-  command: ['./scripts/helm.sh']
+  command: ["./scripts/helm.sh"]
 
 ---
 kind: Deploy

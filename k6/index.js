@@ -15,7 +15,7 @@ const headers = { "Content-Type": "application/json" };
 
 export default function () {
   const res = http.post(
-    "http://local.garden",
+    "http://garden.local",
     JSON.stringify({ query: query }),
     { headers: headers }
   );

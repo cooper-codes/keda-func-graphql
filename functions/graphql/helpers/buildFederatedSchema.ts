@@ -13,7 +13,7 @@ import {
 
 export function buildFederatedSchema(
   options: Omit<BuildSchemaOptions, "skipCheck">,
-  referenceResolvers?: IResolvers
+  referenceResolvers?: IResolvers,
 ) {
   // build TypeGraphQL schema
   const schema = buildSchemaSync({

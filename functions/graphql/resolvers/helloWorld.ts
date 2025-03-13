@@ -1,5 +1,5 @@
 import { Query, Resolver } from "type-graphql";
-import { CacheControl } from "./cacheControl";
+import { CacheControl } from "../cacheControl";
 
 const timeout = (time: number) =>
   new Promise((resolve) => setTimeout(resolve, time));

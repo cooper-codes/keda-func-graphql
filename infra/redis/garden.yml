@@ -1,7 +1,7 @@
 kind: Deploy
 type: container
 name: redis
-exclude: ['*']
+exclude: ["*"]
 spec:
   image: redis:alpine
   replicas: 1

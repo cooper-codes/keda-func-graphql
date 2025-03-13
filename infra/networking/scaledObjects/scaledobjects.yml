@@ -3,7 +3,7 @@ apiVersion: http.keda.sh/v1alpha1
 metadata:
   name: functions
   annotations:
-    httpscaledobject.keda.sh/skip-scaledobject-creation: 'false'
+    httpscaledobject.keda.sh/skip-scaledobject-creation: "false"
 spec:
   hosts:
     - local.garden

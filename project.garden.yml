@@ -11,7 +11,7 @@ environments:
   - name: local
     defaultNamespace: ${var.namespace}
     variables:
-      baseHostname: local.garden
+      baseHostname: garden.local
       context: docker-desktop
 
 providers:
@@ -25,6 +25,3 @@ providers:
     context: ${var.context}
     defaultHostname: ${var.baseHostname}
     setupIngressController: false
-    deploymentRegistry:
-      hostname: '127.0.0.1:5000'
-      namespace: 's4'

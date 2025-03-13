@@ -1,6 +1,6 @@
 # /bin/sh
 
-mkcert local.garden '*.local.garden'
+mkcert garden.local '*.garden.local'
 
 kubectl create ns $1 \
     --dry-run=client \
@@ -8,8 +8,8 @@ kubectl create ns $1 \
     kubectl apply -f -
 
 kubectl create secret tls localcert-tls-secret \
-    --key local.garden+1-key.pem \
-    --cert local.garden+1.pem \
+    --key garden.local+1-key.pem \
+    --cert garden.local+1.pem \
     --save-config \
     --dry-run=client \
     --namespace=$1 \

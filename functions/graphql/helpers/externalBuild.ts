@@ -4,14 +4,15 @@ import path from "path";
 import { printSchemaWithDirectives } from "@graphql-tools/utils";
 
 import { buildFederatedSchema } from "./buildFederatedSchema";
-import HelloWorldResolver from "../resolvers";
+import resolvers from "../resolvers";
 
 const schema = buildFederatedSchema({
-  resolvers: [HelloWorldResolver],
+  resolvers,
 });
 
 fs.writeFileSync(
   path.resolve(__dirname, "../../schema.gql"),
-  printSchemaWithDirectives(schema)
+  printSchemaWithDirectives(schema),
 );
+
 process.exit(0);

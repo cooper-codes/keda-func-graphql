@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES2022",
+    "target": "ES2020",
     "outDir": "dist",
     "rootDir": ".",
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "esnext.asynciterable", "DOM"]
+    "lib": ["es2020", "esnext.asynciterable", "DOM"]
   },
   "include": ["graphql/**/*.ts"]
 }

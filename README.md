@@ -2,6 +2,7 @@
 
 ### Requirements
 
+- Azure Core Tools [Install Instructions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
 - garden bonsai [Install Instructions](https://docs.garden.io/getting-started/quickstart)
 - helm [Install Instructions](https://helm.sh/docs/helm/helm_install/)
 - K6 (optional) [Install Instructions](https://grafana.com/docs/k6/latest/get-started/installation/)

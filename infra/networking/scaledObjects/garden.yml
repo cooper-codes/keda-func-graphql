@@ -2,7 +2,7 @@ kind: Deploy
 type: kubernetes
 name: scaled-objects
 dependencies: [deploy.keda-add-ons-http]
-include: ['scaledobjects.yml']
+include: ["scaledobjects.yml"]
 spec:
   files:
-    - './scaledobjects.yml'
+    - "./scaledobjects.yml"
