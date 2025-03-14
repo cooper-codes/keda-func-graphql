@@ -12,8 +12,6 @@
 
 - `garden deploy`
 - Open web browser to [Apollo Sandbox](https://garden.local/?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAKIAeAhnAA4A2CAiroUcADpJFEAWCttEDgF8QQoA)
-  - The first request may fail. Try submitting again.
-  - If you continue to see an error including "internal-router" try re-running `garden deploy`
 - Or run k6 `k6 run k6/index.js `
 
 ### Teardown
